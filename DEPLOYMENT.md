@@ -5,9 +5,10 @@
 Your local Git repository has been initialized with:
 - ✅ `.gitignore` - Excludes system and cache files
 - ✅ `README.md` - Project documentation
-- ✅ `vercel.json` - Vercel deployment configuration
 - ✅ `index.html` - Your website
 - ✅ Initial commit created
+
+**Note**: We removed `vercel.json` because Vercel automatically detects and serves static HTML sites correctly without it!
 
 ## 📋 Next Steps to Deploy
 

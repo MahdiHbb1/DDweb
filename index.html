@@ -1,750 +1,374 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="d'pur d'jadjan, frozen food, pre-order meals, cake, culinary, makanan beku, makanan siap saji">
-    <meta name="description" content="D'pur D'jadjan - Penyedia Frozen Food, Pre-Order Cook Meals, dan Cake & Culinary berkualitas tinggi dengan bahan terbaik dan cita rasa authentic.">
-    <meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
-    
-    <title>D'pur D'jadjan - Cake & Culinary Services</title>
-    
-    <meta property="og:title" content="D'pur D'jadjan - Cake & Culinary Services">
-    <meta property="og:locale" content="id">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="D'pur D'jadjan - Cake & Culinary Services">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'brand-brown': '#8B4513',
-                        'brand-red': '#DC2626',
-                        'brand-accent': '#A0522D',
-                        'brand-light': '#D2691E',
-                    },
-                    fontFamily: {
-                        'heading': ['Playfair Display', 'serif'],
-                        'body': ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .smooth-scroll {
-            scroll-behavior: smooth;
-        }
-        
-        .cart-badge {
-            animation: bounce 0.5s ease;
-        }
-        
-        @keyframes bounce {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
-        }
-        
-        .product-card {
-            transition: all 0.3s ease;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.15);
-        }
-        
-        .btn-primary {
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
-        }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
-        
-        @keyframes slideInRight {
-            from {
-                transform: translateX(100%);
-            }
-            to {
-                transform: translateX(0);
-            }
-        }
-        
-        .slide-in-right {
-            animation: slideInRight 0.3s ease-out;
-        }
-        
-        .mobile-menu-open {
-            animation: slideInRight 0.3s ease-out;
-        }
-    </style>
+    <meta name="description"
+        content="D'pur D'jadjan Cake & Culinary - Premium handcrafted cakes and culinary creations. Experience elegance in every bite.">
+    <meta name="keywords" content="cake, bakery, culinary, premium cakes, wedding cakes, custom cakes, D'pur D'jadjan">
+    <meta name="author" content="D'pur D'jadjan">
+
+    <title>D'pur D'jadjan | Premium Cake & Culinary Artistry</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body class="m-0 bg-gradient-to-br from-white via-red-50 to-orange-50 flex flex-col min-h-screen smooth-scroll">
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">D'pur D'jadjan</div>
 
-    <!-- Navigation Header -->
-    <header class="sticky top-0 xl:top-4 z-50 max-w-screen-xl bg-white mx-auto xl:rounded-2xl w-full shadow-2xl">
-        <div class="container mx-auto px-4 lg:px-8 py-4 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="#home" class="flex items-center space-x-3">
-                <div class="w-12 h-12 bg-gradient-to-br from-brand-brown to-brand-red rounded-full flex items-center justify-center">
-                    <span class="text-white font-bold text-xl">D'</span>
-                </div>
-                <div class="hidden md:block">
-                    <h1 class="text-2xl font-bold text-brand-brown">D'pur D'jadjan</h1>
-                    <p class="text-xs text-gray-600">Cake & Culinary Services</p>
-                </div>
-            </a>
-            
-            <!-- Desktop Navigation -->
-            <nav class="hidden lg:flex space-x-8 items-center">
-                <a href="#home" class="menu-link text-gray-700 hover:text-brand-red font-semibold transition-colors">Beranda</a>
-                <a href="#about" class="menu-link text-gray-700 hover:text-brand-red font-semibold transition-colors">Tentang Kami</a>
-                <a href="#products" class="menu-link text-gray-700 hover:text-brand-red font-semibold transition-colors">Produk</a>
-                <a href="#services" class="menu-link text-gray-700 hover:text-brand-red font-semibold transition-colors">Layanan</a>
-                <a href="#contact" class="menu-link text-gray-700 hover:text-brand-red font-semibold transition-colors">Hubungi Kami</a>
-            </nav>
-            
-            <!-- Cart & Mobile Menu Button -->
-            <div class="flex items-center space-x-4">
-                <!-- Cart Icon -->
-                <button onclick="toggleCart()" class="relative p-2 hover:bg-red-50 rounded-full transition-colors">
-                    <i class="fas fa-shopping-cart text-brand-red text-2xl"></i>
-                    <span id="cart-count" class="absolute -top-1 -right-1 bg-brand-red text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center cart-badge">0</span>
-                </button>
-                
-                <!-- Mobile Menu Button -->
-                <button id="menu-button" class="lg:hidden text-brand-brown focus:outline-none">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#products" class="nav-link">Products</a></li>
+                <li><a href="#features" class="nav-link">Services</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Elegance in Every Bite</h1>
+            <p>Crafting premium cakes and culinary masterpieces that transform your special moments into unforgettable
+                memories</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">Explore Creations</a>
+                <a href="#contact" class="btn btn-secondary">Order Now</a>
             </div>
         </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
-            <a href="#home" class="block px-6 py-3 text-gray-700 hover:bg-red-50 hover:text-brand-red font-semibold border-b border-gray-100">Beranda</a>
-            <a href="#about" class="block px-6 py-3 text-gray-700 hover:bg-red-50 hover:text-brand-red font-semibold border-b border-gray-100">Tentang Kami</a>
-            <a href="#products" class="block px-6 py-3 text-gray-700 hover:bg-red-50 hover:text-brand-red font-semibold border-b border-gray-100">Produk</a>
-            <a href="#services" class="block px-6 py-3 text-gray-700 hover:bg-red-50 hover:text-brand-red font-semibold border-b border-gray-100">Layanan</a>
-            <a href="#contact" class="block px-6 py-3 text-gray-700 hover:bg-red-50 hover:text-brand-red font-semibold">Hubungi Kami</a>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-image fade-in">
+                    <img src="images/about-bg.png" alt="D'pur D'jadjan Kitchen">
+                </div>
+                <div class="about-content fade-in">
+                    <h2>Our Story</h2>
+                    <p>
+                        <span class="highlight">D'pur D'jadjan</span> was born from a passion for creating extraordinary
+                        culinary experiences.
+                        Our journey began with a simple belief: every celebration deserves something truly special.
+                    </p>
+                    <p>
+                        With years of expertise in artisan baking and culinary arts, we blend traditional techniques
+                        with innovative flavors to create cakes and desserts that are as beautiful as they are
+                        delicious.
+                    </p>
+
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">✨</div>
+                            <div class="feature-text">
+                                <h4>Premium Ingredients</h4>
+                                <p>Only the finest, freshest ingredients</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🎨</div>
+                            <div class="feature-text">
+                                <h4>Custom Designs</h4>
+                                <p>Tailored to your vision</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">👨‍🍳</div>
+                            <div class="feature-text">
+                                <h4>Expert Craftsmanship</h4>
+                                <p>Years of culinary excellence</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">💝</div>
+                            <div class="feature-text">
+                                <h4>Made with Love</h4>
+                                <p>Every creation tells a story</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="relative py-20 lg:py-32 overflow-hidden">
-            <div class="container mx-auto px-4 lg:px-8 max-w-screen-xl">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="text-center lg:text-left">
-                        <h2 class="text-5xl lg:text-7xl font-bold text-brand-brown mb-6 leading-tight">
-                            Kelezatan <span class="text-brand-red">Authentic</span> untuk Keluarga
-                        </h2>
-                        <p class="text-lg lg:text-xl text-gray-700 mb-8 leading-relaxed">
-                            Nikmati beragam frozen food premium, masakan siap saji, dan kue berkualitas tinggi dengan cita rasa rumahan yang memanjakan lidah.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <a href="#products" class="btn-primary bg-brand-red hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold text-lg inline-flex items-center justify-center">
-                                <i class="fas fa-utensils mr-2"></i> Pesan Sekarang
-                            </a>
-                            <a href="#about" class="bg-white hover:bg-gray-50 text-brand-brown border-2 border-brand-brown px-8 py-4 rounded-full font-bold text-lg inline-flex items-center justify-center transition-all">
-                                <i class="fas fa-info-circle mr-2"></i> Pelajari Lebih Lanjut
-                            </a>
+    <!-- Products Section -->
+    <section class="products section" id="products">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Our Signature Creations</h2>
+                <p>Explore our exquisite collection of handcrafted cakes and culinary delights, each designed to make
+                    your moments extraordinary</p>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="images/product-1.png" alt="Elegant Wedding Cakes">
+                        <div class="product-overlay">
+                            <h3>Wedding Cakes</h3>
                         </div>
                     </div>
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-gradient-to-br from-brand-red/20 to-brand-brown/20 rounded-3xl transform rotate-6"></div>
-                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=800&fit=crop" 
-                             alt="Delicious Food" 
-                             class="relative rounded-3xl shadow-2xl w-full h-96 lg:h-[500px] object-cover">
+                    <div class="product-info">
+                        <h3>Wedding Cakes</h3>
+                        <p>Stunning multi-tiered masterpieces designed to be the centerpiece of your special day</p>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="images/product-2.png" alt="Gourmet Chocolate Desserts">
+                        <div class="product-overlay">
+                            <h3>Chocolate Collection</h3>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Chocolate Collection</h3>
+                        <p>Luxurious chocolate creations for the true connoisseur, rich in flavor and elegance</p>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="images/product-3.png" alt="Artisan Cupcakes">
+                        <div class="product-overlay">
+                            <h3>Artisan Cupcakes</h3>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Artisan Cupcakes</h3>
+                        <p>Delightfully decorated cupcakes perfect for any celebration, big or small</p>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="images/product-4.png" alt="Artisan Breads & Pastries">
+                        <div class="product-overlay">
+                            <h3>Bakery Selection</h3>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Bakery Selection</h3>
+                        <p>Fresh-baked breads and pastries crafted daily with traditional methods</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- About / Why Choose Us Section -->
-        <section id="about" class="py-16 lg:py-24 bg-white">
-            <div class="container mx-auto px-4 lg:px-8 max-w-screen-xl">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl lg:text-6xl font-bold text-brand-brown mb-4">
-                        Mengapa Memilih <span class="text-brand-red">D'pur D'jadjan?</span>
-                    </h2>
-                    <div class="w-24 h-1 bg-brand-red mx-auto mb-6"></div>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                        Kami berkomitmen menghadirkan produk berkualitas premium dengan bahan pilihan dan proses produksi yang higienis untuk kepuasan pelanggan.
-                    </p>
+    <!-- Features/Services Section -->
+    <section class="features section" id="features">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Why Choose D'pur D'jadjan</h2>
+                <p>We go beyond baking to create unforgettable experiences</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-card-icon">🎂</div>
+                    <h3>Custom Orders</h3>
+                    <p>Bring your vision to life with our bespoke cake design service tailored to your unique
+                        preferences</p>
                 </div>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Feature 1 -->
-                    <div class="group p-8 bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-brand-red">
-                        <div class="w-16 h-16 bg-brand-red rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-star text-white text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-brand-brown mb-4">Kualitas Terjamin</h3>
-                        <p class="text-gray-700">Menggunakan bahan-bahan pilihan terbaik dengan standar keamanan pangan yang ketat untuk memastikan kualitas produk.</p>
-                    </div>
-                    
-                    <!-- Feature 2 -->
-                    <div class="group p-8 bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-brand-red">
-                        <div class="w-16 h-16 bg-brand-brown rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-heart text-white text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-brand-brown mb-4">Cita Rasa Authentic</h3>
-                        <p class="text-gray-700">Resep tradisional yang autentik dipadukan dengan teknik modern menghasilkan kelezatan yang tak terlupakan.</p>
-                    </div>
-                    
-                    <!-- Feature 3 -->
-                    <div class="group p-8 bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-brand-red">
-                        <div class="w-16 h-16 bg-brand-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-clock text-white text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-brand-brown mb-4">Praktis & Efisien</h3>
-                        <p class="text-gray-700">Solusi sempurna untuk Anda yang sibuk namun tetap ingin menyajikan makanan lezat dan bergizi untuk keluarga.</p>
-                    </div>
-                    
-                    <!-- Feature 4 -->
-                    <div class="group p-8 bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-brand-red">
-                        <div class="w-16 h-16 bg-brand-light rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-leaf text-white text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-brand-brown mb-4">Bahan Alami</h3>
-                        <p class="text-gray-700">Tanpa pengawet berbahaya, mengutamakan bahan-bahan alami dan segar untuk kesehatan keluarga Anda.</p>
-                    </div>
-                    
-                    <!-- Feature 5 -->
-                    <div class="group p-8 bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-brand-red">
-                        <div class="w-16 h-16 bg-brand-red rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-tag text-white text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-brand-brown mb-4">Harga Terjangkau</h3>
-                        <p class="text-gray-700">Kualitas premium dengan harga yang ramah di kantong, cocok untuk semua kalangan.</p>
-                    </div>
-                    
-                    <!-- Feature 6 -->
-                    <div class="group p-8 bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-brand-red">
-                        <div class="w-16 h-16 bg-brand-brown rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-shipping-fast text-white text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-brand-brown mb-4">Pengiriman Cepat</h3>
-                        <p class="text-gray-700">Sistem pre-order yang efisien dengan pengiriman tepat waktu untuk menjaga kesegaran produk.</p>
-                    </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-card-icon">🚚</div>
+                    <h3>Delivery Service</h3>
+                    <p>Safe and timely delivery to ensure your cake arrives in perfect condition</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-card-icon">👰</div>
+                    <h3>Event Catering</h3>
+                    <p>Complete dessert catering for weddings, corporate events, and special celebrations</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-card-icon">📅</div>
+                    <h3>Flexible Scheduling</h3>
+                    <p>We work around your timeline to ensure everything is perfect for your event</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Products Section -->
-        <section id="products" class="py-16 lg:py-24 bg-gradient-to-br from-red-50 to-orange-50">
-            <div class="container mx-auto px-4 lg:px-8 max-w-screen-xl">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl lg:text-6xl font-bold text-brand-brown mb-4">
-                        Galeri <span class="text-brand-red">Produk</span>
-                    </h2>
-                    <div class="w-24 h-1 bg-brand-red mx-auto mb-6"></div>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                        Pilihan lengkap frozen food, masakan siap saji, dan kue untuk segala kebutuhan Anda
-                    </p>
-                </div>
-                
-                <!-- Product Categories Tabs -->
-                <div class="flex flex-wrap justify-center gap-4 mb-12">
-                    <button onclick="filterProducts('all')" class="category-btn px-8 py-3 bg-brand-red text-white rounded-full font-semibold hover:bg-red-700 transition-all active">
-                        Semua Produk
-                    </button>
-                    <button onclick="filterProducts('frozen')" class="category-btn px-8 py-3 bg-white text-brand-brown border-2 border-brand-brown rounded-full font-semibold hover:bg-brand-brown hover:text-white transition-all">
-                        Frozen Food
-                    </button>
-                    <button onclick="filterProducts('meals')" class="category-btn px-8 py-3 bg-white text-brand-brown border-2 border-brand-brown rounded-full font-semibold hover:bg-brand-brown hover:text-white transition-all">
-                        Pre-Order Meals
-                    </button>
-                    <button onclick="filterProducts('cakes')" class="category-btn px-8 py-3 bg-white text-brand-brown border-2 border-brand-brown rounded-full font-semibold hover:bg-brand-brown hover:text-white transition-all">
-                        Cakes & Pastries
-                    </button>
-                </div>
-                
-                <!-- Products Grid -->
-                <div id="products-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                    <!-- Products will be dynamically loaded by JavaScript -->
-                </div>
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Get in Touch</h2>
+                <p>Ready to create something extraordinary? Let's talk about your vision</p>
             </div>
-        </section>
 
-        <!-- Services Section -->
-        <section id="services" class="py-16 lg:py-24 bg-white">
-            <div class="container mx-auto px-4 lg:px-8 max-w-screen-xl">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl lg:text-6xl font-bold text-brand-brown mb-4">
-                        Layanan <span class="text-brand-red">Kami</span>
-                    </h2>
-                    <div class="w-24 h-1 bg-brand-red mx-auto"></div>
-                </div>
-                
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="text-center p-6 hover:bg-red-50 rounded-2xl transition-all">
-                        <div class="w-20 h-20 bg-brand-red rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-box text-white text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-brand-brown mb-2">Pre-Order System</h3>
-                        <p class="text-gray-600">Pesan sesuai kebutuhan Anda</p>
-                    </div>
-                    
-                    <div class="text-center p-6 hover:bg-red-50 rounded-2xl transition-all">
-                        <div class="w-20 h-20 bg-brand-brown rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-truck text-white text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-brand-brown mb-2">Delivery Service</h3>
-                        <p class="text-gray-600">Pengiriman ke lokasi Anda</p>
-                    </div>
-                    
-                    <div class="text-center p-6 hover:bg-red-50 rounded-2xl transition-all">
-                        <div class="w-20 h-20 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-birthday-cake text-white text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-brand-brown mb-2">Custom Order</h3>
-                        <p class="text-gray-600">Pesanan sesuai keinginan</p>
-                    </div>
-                    
-                    <div class="text-center p-6 hover:bg-red-50 rounded-2xl transition-all">
-                        <div class="w-20 h-20 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-credit-card text-white text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-brand-brown mb-2">Easy Payment</h3>
-                        <p class="text-gray-600">Berbagai metode pembayaran</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <div class="contact-container">
+                <div class="contact-info fade-in">
+                    <h2>Contact Us</h2>
+                    <p>We'd love to hear from you! Reach out to discuss your next celebration.</p>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-16 lg:py-24 bg-gradient-to-br from-brand-brown to-brand-accent text-white">
-            <div class="container mx-auto px-4 lg:px-8 max-w-screen-xl">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl lg:text-6xl font-bold mb-4">Hubungi Kami</h2>
-                    <div class="w-24 h-1 bg-white mx-auto mb-6"></div>
-                    <p class="text-lg text-white/90 max-w-3xl mx-auto">
-                        Siap melayani Anda dengan sepenuh hati. Hubungi kami untuk informasi lebih lanjut atau pemesanan!
-                    </p>
-                </div>
-                
-                <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-phone text-3xl"></i>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <p>Jakarta, Indonesia</p>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Telepon</h3>
-                        <a href="tel:+6287764230333" class="text-white/90 hover:text-white transition-colors">
-                            +62 877-6423-0333
-                        </a>
-                    </div>
-                    
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fab fa-whatsapp text-3xl"></i>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>+62 XXX-XXXX-XXXX</p>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">WhatsApp</h3>
-                        <a href="https://wa.me/6287764230333" class="text-white/90 hover:text-white transition-colors">
-                            Chat dengan Kami
-                        </a>
-                    </div>
-                    
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-envelope text-3xl"></i>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>hello@dpurdadjan.com</p>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Email</h3>
-                        <a href="mailto:info@dpurdadjan.com" class="text-white/90 hover:text-white transition-colors">
-                            info@dpurdadjan.com
-                        </a>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Business Hours</h4>
+                                <p>Mon - Sat: 9:00 AM - 7:00 PM</p>
+                                <p>Sunday: By Appointment</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="mt-12 text-center">
-                    <a href="https://wa.me/6287764230333?text=Halo%20D'pur%20D'jadjan,%20saya%20ingin%20bertanya%20tentang%20produk%20Anda" 
-                       class="btn-primary bg-white hover:bg-gray-100 text-brand-brown px-10 py-4 rounded-full font-bold text-lg inline-flex items-center justify-center">
-                        <i class="fab fa-whatsapp mr-2 text-xl"></i> Mulai Chat Sekarang
-                    </a>
-                </div>
+
+                <form class="contact-form fade-in" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+62 XXX-XXXX-XXXX">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required
+                            placeholder="Tell us about your event and requirements..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </div>
+                </form>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4 lg:px-8 max-w-screen-xl">
-            <div class="grid md:grid-cols-3 gap-8 mb-8">
-                <div>
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-brand-brown to-brand-red rounded-full flex items-center justify-center">
-                            <span class="text-white font-bold text-xl">D'</span>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold">D'pur D'jadjan</h3>
-                            <p class="text-sm text-gray-400">Cake & Culinary Services</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-400">
-                        Menghadirkan kelezatan authentic untuk keluarga Indonesia dengan kualitas terjamin dan harga terjangkau.
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>D'pur D'jadjan</h3>
+                    <p>
+                        Creating memorable moments through exceptional cakes and culinary artistry.
+                        Your celebration, our passion.
                     </p>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-bold mb-4">Link Cepat</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Beranda</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">Tentang Kami</a></li>
-                        <li><a href="#products" class="text-gray-400 hover:text-white transition-colors">Produk</a></li>
-                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Layanan</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Hubungi Kami</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-bold mb-4">Ikuti Kami</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-red transition-colors">
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-red transition-colors">
+                        <a href="#" class="social-link" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://wa.me/6287764230333" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-red transition-colors">
+                        <a href="#" class="social-link" aria-label="WhatsApp">
                             <i class="fab fa-whatsapp"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-red transition-colors">
-                            <i class="fab fa-tiktok"></i>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
                         </a>
                     </div>
                 </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#products">Our Products</a></li>
+                        <li><a href="#features">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#products">Custom Cakes</a></li>
+                        <li><a href="#products">Wedding Cakes</a></li>
+                        <li><a href="#features">Event Catering</a></li>
+                        <li><a href="#features">Delivery Service</a></li>
+                        <li><a href="#contact">Consultation</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get special offers and updates</p>
+                    <form style="margin-top: 1rem;">
+                        <input type="email" placeholder="Your email"
+                            style="width: 100%; padding: 0.8rem; border-radius: 8px; border: none; margin-bottom: 0.5rem;">
+                        <button type="submit" class="btn btn-primary"
+                            style="width: 100%; padding: 0.8rem;">Subscribe</button>
+                    </form>
+                </div>
             </div>
-            
-            <div class="border-t border-gray-800 pt-8 text-center">
-                <p class="text-gray-400">
-                    © 2024 <span class="text-white font-semibold">D'pur D'jadjan</span>. All rights reserved.
-                </p>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 D'pur D'jadjan Cake & Culinary. All rights reserved. | Crafted with ❤️</p>
             </div>
         </div>
     </footer>
 
-    <!-- Shopping Cart Modal -->
-    <div id="cart-modal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden slide-in-right">
-            <div class="bg-gradient-to-r from-brand-brown to-brand-red text-white p-6 flex justify-between items-center">
-                <h3 class="text-2xl font-bold flex items-center">
-                    <i class="fas fa-shopping-cart mr-3"></i> Keranjang Belanja
-                </h3>
-                <button onclick="toggleCart()" class="text-white hover:text-gray-200 transition-colors">
-                    <i class="fas fa-times text-2xl"></i>
-                </button>
-            </div>
-            
-            <div id="cart-items" class="p-6 max-h-[50vh] overflow-y-auto">
-                <p class="text-center text-gray-500 py-8">Keranjang belanja Anda masih kosong</p>
-            </div>
-            
-            <div class="border-t p-6 bg-gray-50">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="text-xl font-bold text-gray-700">Total:</span>
-                    <span id="cart-total" class="text-3xl font-bold text-brand-red">Rp 0</span>
-                </div>
-                <button onclick="checkout()" class="w-full btn-primary bg-gradient-to-r from-brand-red to-red-700 hover:from-red-700 hover:to-brand-red text-white py-4 rounded-full font-bold text-lg flex items-center justify-center">
-                    <i class="fab fa-whatsapp mr-2 text-xl"></i> Pesan via WhatsApp
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scroll to Top Button -->
-    <button id="to-top-button" onclick="scrollToTop()" 
-            class="hidden fixed z-40 bottom-8 right-8 p-4 bg-brand-red hover:bg-red-700 text-white rounded-full shadow-2xl transition-all hover:scale-110">
-        <i class="fas fa-arrow-up text-xl"></i>
-    </button>
-
-    <script>
-        // Products Data
-        const products = [
-            // Frozen Food
-            { id: 1, name: 'Chicken Nugget Premium', category: 'frozen', price: 35000, image: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=400&h=400&fit=crop', description: 'Nugget ayam renyah dengan daging pilihan' },
-            { id: 2, name: 'Fish Fillet Original', category: 'frozen', price: 45000, image: 'https://images.unsplash.com/photo-1580959375944-57c1ea6a4368?w=400&h=400&fit=crop', description: 'Fillet ikan dori berkualitas tinggi' },
-            { id: 3, name: 'Spring Roll Sayuran', category: 'frozen', price: 28000, image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?w=400&h=400&fit=crop', description: 'Lumpia sayur segar dan lezat' },
-            { id: 4, name: 'Beef Meatball', category: 'frozen', price: 40000, image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&h=400&fit=crop', description: 'Bakso sapi premium homemade' },
-            { id: 5, name: 'Chicken Sausage', category: 'frozen', price: 32000, image: 'https://images.unsplash.com/photo-1613564834361-9436948817d1?w=400&h=400&fit=crop', description: 'Sosis ayam tanpa pengawet' },
-            { id: 6, name: 'Shrimp Dumpling', category: 'frozen', price: 50000, image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=400&h=400&fit=crop', description: 'Pangsit udang isi melimpah' },
-            
-            // Pre-Order Meals
-            { id: 7, name: 'Rendang Sapi Padang', category: 'meals', price: 65000, image: 'https://images.unsplash.com/photo-1545247181-516773cae754?w=400&h=400&fit=crop', description: 'Rendang sapi authentic Padang' },
-            { id: 8, name: 'Soto Ayam Lamongan', category: 'meals', price: 35000, image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=400&h=400&fit=crop', description: 'Soto ayam khas Lamongan' },
-            { id: 9, name: 'Nasi Kuning Komplit', category: 'meals', price: 45000, image: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400&h=400&fit=crop', description: 'Nasi kuning dengan lauk lengkap' },
-            { id: 10, name: 'Ayam Goreng Kremes', category: 'meals', price: 40000, image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=400&h=400&fit=crop', description: 'Ayam goreng dengan kremesan renyah' },
-            { id: 11, name: 'Gulai Kambing', category: 'meals', price: 70000, image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=400&fit=crop', description: 'Gulai kambing empuk dan gurih' },
-            { id: 12, name: 'Paket Nasi Box', category: 'meals', price: 30000, image: 'https://images.unsplash.com/photo-1607330289024-1aa300dc8e98?w=400&h=400&fit=crop', description: 'Nasi box praktis untuk acara' },
-            
-            // Cakes & Pastries
-            { id: 13, name: 'Brownies Coklat Premium', category: 'cakes', price: 55000, image: 'https://images.unsplash.com/photo-1607920591413-4ec007e70023?w=400&h=400&fit=crop', description: 'Brownies lembut dengan coklat Belgium' },
-            { id: 14, name: 'Cheese Cake Original', category: 'cakes', price: 60000, image: 'https://images.unsplash.com/photo-1524351199678-941a58a3df50?w=400&h=400&fit=crop', description: 'Cheese cake lembut dan creamy' },
-            { id: 15, name: 'Pudding Fruit Mix', category: 'cakes', price: 35000, image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&h=400&fit=crop', description: 'Pudding dengan potongan buah segar' },
-            { id: 16, name: 'Red Velvet Cake', category: 'cakes', price: 75000, image: 'https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=400&h=400&fit=crop', description: 'Red velvet dengan cream cheese frosting' },
-            { id: 17, name: 'Lapis Legit Tradisional', category: 'cakes', price: 85000, image: 'https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=400&h=400&fit=crop', description: 'Lapis legit premium isi 20 layer' },
-            { id: 18, name: 'Cupcake Assorted', category: 'cakes', price: 45000, image: 'https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=400&h=400&fit=crop', description: 'Cupcake berbagai rasa (6 pcs)' },
-        ];
-
-        let cart = [];
-        let currentFilter = 'all';
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            displayProducts(products);
-            updateCartUI();
-            
-            // Mobile menu toggle
-            document.getElementById('menu-button').addEventListener('click', function(e) {
-                e.stopPropagation();
-                const menu = document.getElementById('mobile-menu');
-                menu.classList.toggle('hidden');
-            });
-            
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(e) {
-                const menu = document.getElementById('mobile-menu');
-                const button = document.getElementById('menu-button');
-                if (!menu.contains(e.target) && !button.contains(e.target)) {
-                    menu.classList.add('hidden');
-                }
-            });
-            
-            // Close mobile menu on link click
-            document.querySelectorAll('#mobile-menu a').forEach(link => {
-                link.addEventListener('click', function() {
-                    document.getElementById('mobile-menu').classList.add('hidden');
-                });
-            });
-            
-            // Scroll to top button
-            window.addEventListener('scroll', function() {
-                const button = document.getElementById('to-top-button');
-                if (window.scrollY > 300) {
-                    button.classList.remove('hidden');
-                } else {
-                    button.classList.add('hidden');
-                }
-            });
-            
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-        });
-
-        // Display products
-        function displayProducts(productsToShow) {
-            const grid = document.getElementById('products-grid');
-            grid.innerHTML = productsToShow.map(product => `
-                <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
-                        <div class="absolute top-4 right-4 bg-brand-red text-white px-3 py-1 rounded-full text-sm font-bold">
-                            ${formatPrice(product.price)}
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-brand-brown mb-2">${product.name}</h3>
-                        <p class="text-gray-600 text-sm mb-4">${product.description}</p>
-                        <button onclick="addToCart(${product.id})" 
-                                class="w-full btn-primary bg-brand-red hover:bg-red-700 text-white py-3 rounded-full font-semibold flex items-center justify-center">
-                            <i class="fas fa-cart-plus mr-2"></i> Tambah ke Keranjang
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Filter products
-        function filterProducts(category) {
-            currentFilter = category;
-            const filtered = category === 'all' ? products : products.filter(p => p.category === category);
-            displayProducts(filtered);
-            
-            // Update active button
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.classList.remove('bg-brand-red', 'text-white');
-                btn.classList.add('bg-white', 'text-brand-brown', 'border-2', 'border-brand-brown');
-            });
-            event.target.classList.remove('bg-white', 'text-brand-brown', 'border-2', 'border-brand-brown');
-            event.target.classList.add('bg-brand-red', 'text-white');
-        }
-
-        // Add to cart
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            const existingItem = cart.find(item => item.id === productId);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ ...product, quantity: 1 });
-            }
-            
-            updateCartUI();
-            
-            // Show feedback
-            const button = event.target;
-            const originalText = button.innerHTML;
-            button.innerHTML = '<i class="fas fa-check mr-2"></i> Ditambahkan!';
-            button.classList.add('bg-green-600');
-            setTimeout(() => {
-                button.innerHTML = originalText;
-                button.classList.remove('bg-green-600');
-            }, 1000);
-        }
-
-        // Remove from cart
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            updateCartUI();
-        }
-
-        // Update quantity
-        function updateQuantity(productId, change) {
-            const item = cart.find(item => item.id === productId);
-            if (item) {
-                item.quantity += change;
-                if (item.quantity <= 0) {
-                    removeFromCart(productId);
-                } else {
-                    updateCartUI();
-                }
-            }
-        }
-
-        // Update cart UI
-        function updateCartUI() {
-            const cartCount = document.getElementById('cart-count');
-            const cartItems = document.getElementById('cart-items');
-            const cartTotal = document.getElementById('cart-total');
-            
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            
-            cartCount.textContent = totalItems;
-            cartTotal.textContent = formatPrice(totalPrice);
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p class="text-center text-gray-500 py-8">Keranjang belanja Anda masih kosong</p>';
-            } else {
-                cartItems.innerHTML = cart.map(item => `
-                    <div class="flex items-center gap-4 mb-4 pb-4 border-b">
-                        <img src="${item.image}" alt="${item.name}" class="w-20 h-20 rounded-lg object-cover">
-                        <div class="flex-1">
-                            <h4 class="font-bold text-brand-brown">${item.name}</h4>
-                            <p class="text-brand-red font-semibold">${formatPrice(item.price)}</p>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <button onclick="updateQuantity(${item.id}, -1)" class="w-8 h-8 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center">
-                                <i class="fas fa-minus text-sm"></i>
-                            </button>
-                            <span class="w-8 text-center font-bold">${item.quantity}</span>
-                            <button onclick="updateQuantity(${item.id}, 1)" class="w-8 h-8 bg-brand-red hover:bg-red-700 text-white rounded-full flex items-center justify-center">
-                                <i class="fas fa-plus text-sm"></i>
-                            </button>
-                        </div>
-                        <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                `).join('');
-            }
-        }
-
-        // Toggle cart modal
-        function toggleCart() {
-            const modal = document.getElementById('cart-modal');
-            modal.classList.toggle('hidden');
-        }
-
-        // Close cart when clicking outside
-        document.getElementById('cart-modal')?.addEventListener('click', function(e) {
-            if (e.target.id === 'cart-modal') {
-                toggleCart();
-            }
-        });
-
-        // Checkout via WhatsApp
-        function checkout() {
-            if (cart.length === 0) {
-                alert('Keranjang belanja Anda masih kosong!');
-                return;
-            }
-            
-            const whatsappNumber = '6287764230333';
-            let message = '*Pesanan Baru dari D\'pur D\'jadjan*\n\n';
-            message += '━━━━━━━━━━━━━━━━━━\n\n';
-            
-            cart.forEach((item, index) => {
-                message += `${index + 1}. *${item.name}*\n`;
-                message += `   Jumlah: ${item.quantity}\n`;
-                message += `   Harga: ${formatPrice(item.price)}\n`;
-                message += `   Subtotal: ${formatPrice(item.price * item.quantity)}\n\n`;
-            });
-            
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            message += '━━━━━━━━━━━━━━━━━━\n';
-            message += `*TOTAL: ${formatPrice(total)}*\n\n`;
-            message += 'Terima kasih telah berbelanja di D\'pur D\'jadjan! 🙏';
-            
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-            
-            window.open(whatsappURL, '_blank');
-        }
-
-        // Format price to Rupiah
-        function formatPrice(price) {
-            return 'Rp ' + price.toLocaleString('id-ID');
-        }
-
-        // Scroll to top
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 </body>
+
 </html>
