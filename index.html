@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id" data-lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="D'pur D'jadjan Cake & Culinary - Premium handcrafted cakes and culinary creations. Experience elegance in every bite.">
-    <meta name="keywords" content="cake, bakery, culinary, premium cakes, wedding cakes, custom cakes, D'pur D'jadjan">
+    <meta name="description" data-i18n="meta.description"
+        content="D'pur D'jadjan - Spesialis frozen food premium dan masakan pre-order berkualitas tinggi. Nikmati kemudahan kuliner dengan cita rasa istimewa.">
+    <meta name="keywords" content="frozen food, makanan beku, pre-order meals, masakan siap masak, dimsum, nugget, bakso, katering, D'pur D'jadjan, kuliner Jakarta">
     <meta name="author" content="D'pur D'jadjan">
 
-    <title>D'pur D'jadjan | Premium Cake & Culinary Artistry</title>
+    <title data-i18n="meta.title">D'pur D'jadjan | Spesialis Frozen Food & Kuliner Premium</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❄️</text></svg>">
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
@@ -26,14 +26,18 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <div class="logo">D'pur D'jadjan</div>
+            <div class="logo" data-i18n="nav.brand">D'pur D'jadjan</div>
 
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#products" class="nav-link">Products</a></li>
-                <li><a href="#features" class="nav-link">Services</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#home" class="nav-link" data-i18n="nav.links.0.text">Beranda</a></li>
+                <li><a href="#about" class="nav-link" data-i18n="nav.links.1.text">Tentang Kami</a></li>
+                <li><a href="#products" class="nav-link" data-i18n="nav.links.2.text">Produk</a></li>
+                <li><a href="#features" class="nav-link" data-i18n="nav.links.3.text">Layanan</a></li>
+                <li><a href="#contact" class="nav-link" data-i18n="nav.links.4.text">Kontak</a></li>
+                <li class="lang-switcher">
+                    <button class="lang-btn active" data-lang="id" onclick="switchLanguage('id')">ID</button>
+                    <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">EN</button>
+                </li>
             </ul>
 
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
@@ -47,12 +51,15 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Elegance in Every Bite</h1>
-            <p>Crafting premium cakes and culinary masterpieces that transform your special moments into unforgettable
-                memories</p>
+            <h1 data-i18n="hero.headline">Kelezatan Premium di Setiap Gigitan</h1>
+            <p data-i18n="hero.subheadline">Spesialis frozen food berkualitas tinggi & masakan pre-order. Nikmati kemudahan dengan cita rasa istimewa - dari freezer langsung ke meja makan Anda.</p>
             <div class="hero-buttons">
-                <a href="#products" class="btn btn-primary">Explore Creations</a>
-                <a href="#contact" class="btn btn-secondary">Order Now</a>
+                <a href="#products" class="btn btn-primary" data-i18n="hero.cta.primary">Lihat Produk</a>
+                <a href="https://wa.me/6287764230333?text=Halo%20D%27pur%20D%27jadjan!%20Saya%20ingin%20memesan%20produk%20frozen%20food%20dan%20kuliner." 
+                   class="btn btn-whatsapp" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    <span data-i18n="hero.cta.whatsapp">Pesan via WhatsApp</span>
+                </a>
             </div>
         </div>
     </section>
@@ -65,45 +72,39 @@
                     <img src="images/about-bg.png" alt="D'pur D'jadjan Kitchen">
                 </div>
                 <div class="about-content fade-in">
-                    <h2>Our Story</h2>
-                    <p>
-                        <span class="highlight">D'pur D'jadjan</span> was born from a passion for creating extraordinary
-                        culinary experiences.
-                        Our journey began with a simple belief: every celebration deserves something truly special.
-                    </p>
-                    <p>
-                        With years of expertise in artisan baking and culinary arts, we blend traditional techniques
-                        with innovative flavors to create cakes and desserts that are as beautiful as they are
-                        delicious.
-                    </p>
+                    <h2 data-i18n="about.title">Kisah Kami</h2>
+                    <div data-i18n="about.content">
+                        <p>Di <strong>D'pur D'jadjan</strong>, kami menghadirkan revolusi kuliner dengan spesialisasi frozen food premium dan masakan pre-order yang siap memanjakan selera Anda. Setiap produk dibuat dengan bahan pilihan terbaik, diproses higienis, dan dikemas sempurna untuk menjaga kesegaran serta kualitas rasa. Dari frozen food praktis hingga hidangan siap masak, kami memastikan setiap produk memberikan pengalaman kuliner terbaik untuk keluarga Indonesia.</p>
+                    </div>
 
-                    <div class="about-features">
+                    <div class="about-features" id="aboutFeatures">
+                        <!-- Features will be dynamically loaded -->
                         <div class="feature-item">
                             <div class="feature-icon">✨</div>
                             <div class="feature-text">
-                                <h4>Premium Ingredients</h4>
-                                <p>Only the finest, freshest ingredients</p>
+                                <h4>Bahan Premium</h4>
+                                <p>Hanya bahan pilihan terbaik untuk kualitas maksimal</p>
                             </div>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">🎨</div>
+                            <div class="feature-icon">❄️</div>
                             <div class="feature-text">
-                                <h4>Custom Designs</h4>
-                                <p>Tailored to your vision</p>
+                                <h4>Proses Higienis</h4>
+                                <p>Standar keamanan pangan yang ketat & modern</p>
                             </div>
                         </div>
                         <div class="feature-item">
                             <div class="feature-icon">👨‍🍳</div>
                             <div class="feature-text">
-                                <h4>Expert Craftsmanship</h4>
-                                <p>Years of culinary excellence</p>
+                                <h4>Resep Ahli</h4>
+                                <p>Dikembangkan oleh chef berpengalaman</p>
                             </div>
                         </div>
                         <div class="feature-item">
                             <div class="feature-icon">💝</div>
                             <div class="feature-text">
-                                <h4>Made with Love</h4>
-                                <p>Every creation tells a story</p>
+                                <h4>Dibuat dengan Cinta</h4>
+                                <p>Setiap produk diproduksi dengan perhatian detail</p>
                             </div>
                         </div>
                     </div>
@@ -116,63 +117,33 @@
     <section class="products section" id="products">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Our Signature Creations</h2>
-                <p>Explore our exquisite collection of handcrafted cakes and culinary delights, each designed to make
-                    your moments extraordinary</p>
+                <h2 data-i18n="products.title">Produk Unggulan Kami</h2>
+                <p data-i18n="products.subtitle">Frozen Food & Kuliner Premium</p>
             </div>
 
-            <div class="products-grid">
-                <div class="product-card fade-in">
-                    <div class="product-image">
-                        <img src="images/product-1.png" alt="Elegant Wedding Cakes">
-                        <div class="product-overlay">
-                            <h3>Wedding Cakes</h3>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Wedding Cakes</h3>
-                        <p>Stunning multi-tiered masterpieces designed to be the centerpiece of your special day</p>
-                    </div>
-                </div>
+            <!-- Frozen Food - Primary Category -->
+            <div id="frozenProductsGrid" class="products-grid">
+                <!-- Frozen food products will be dynamically loaded here -->
+            </div>
 
-                <div class="product-card fade-in">
-                    <div class="product-image">
-                        <img src="images/product-2.png" alt="Gourmet Chocolate Desserts">
-                        <div class="product-overlay">
-                            <h3>Chocolate Collection</h3>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Chocolate Collection</h3>
-                        <p>Luxurious chocolate creations for the true connoisseur, rich in flavor and elegance</p>
-                    </div>
-                </div>
+            <!-- WhatsApp CTA -->
+            <div class="cta-section fade-in" style="text-align: center; margin: 3rem 0;">
+                <h3 style="margin-bottom: 1rem; color: var(--primary-burgundy);">Siap Memesan?</h3>
+                <a href="https://wa.me/6287764230333?text=Halo%20D%27pur%20D%27jadjan!%20Saya%20ingin%20memesan%20produk%20frozen%20food%20dan%20kuliner." 
+                   class="btn btn-whatsapp" target="_blank" rel="noopener" style="font-size: 1.1rem; padding: 1rem 2.5rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    <span>Hubungi Kami di WhatsApp</span>
+                </a>
+            </div>
 
-                <div class="product-card fade-in">
-                    <div class="product-image">
-                        <img src="images/product-3.png" alt="Artisan Cupcakes">
-                        <div class="product-overlay">
-                            <h3>Artisan Cupcakes</h3>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Artisan Cupcakes</h3>
-                        <p>Delightfully decorated cupcakes perfect for any celebration, big or small</p>
-                    </div>
-                </div>
+            <!-- Bonus Treats - Cakes Section -->
+            <div class="section-header fade-in" style="margin-top: 5rem;">
+                <h2 style="color: var(--accent-teal);">Bonus Treats - Kue & Pastry</h2>
+                <p style="color: var(--text-light);">Pelengkap istimewa untuk acara spesial Anda</p>
+            </div>
 
-                <div class="product-card fade-in">
-                    <div class="product-image">
-                        <img src="images/product-4.png" alt="Artisan Breads & Pastries">
-                        <div class="product-overlay">
-                            <h3>Bakery Selection</h3>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Bakery Selection</h3>
-                        <p>Fresh-baked breads and pastries crafted daily with traditional methods</p>
-                    </div>
-                </div>
+            <div id="cakeProductsGrid" class="products-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <!-- Cake products will be dynamically loaded here -->
             </div>
         </div>
     </section>
@@ -181,35 +152,11 @@
     <section class="features section" id="features">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Why Choose D'pur D'jadjan</h2>
-                <p>We go beyond baking to create unforgettable experiences</p>
+                <h2 data-i18n="services.title">Mengapa Memilih D'pur D'jadjan</h2>
             </div>
 
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-card-icon">🎂</div>
-                    <h3>Custom Orders</h3>
-                    <p>Bring your vision to life with our bespoke cake design service tailored to your unique
-                        preferences</p>
-                </div>
-
-                <div class="feature-card fade-in">
-                    <div class="feature-card-icon">🚚</div>
-                    <h3>Delivery Service</h3>
-                    <p>Safe and timely delivery to ensure your cake arrives in perfect condition</p>
-                </div>
-
-                <div class="feature-card fade-in">
-                    <div class="feature-card-icon">👰</div>
-                    <h3>Event Catering</h3>
-                    <p>Complete dessert catering for weddings, corporate events, and special celebrations</p>
-                </div>
-
-                <div class="feature-card fade-in">
-                    <div class="feature-card-icon">📅</div>
-                    <h3>Flexible Scheduling</h3>
-                    <p>We work around your timeline to ensure everything is perfect for your event</p>
-                </div>
+            <div class="features-grid" id="servicesGrid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <!-- Services will be dynamically loaded -->
             </div>
         </div>
     </section>
@@ -218,83 +165,53 @@
     <section class="contact section" id="contact">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Get in Touch</h2>
-                <p>Ready to create something extraordinary? Let's talk about your vision</p>
+                <h2 data-i18n="contact.title">Hubungi Kami</h2>
+                <p data-i18n="contact.subtitle">Siap melayani pesanan dan menjawab pertanyaan Anda</p>
             </div>
 
             <div class="contact-container">
                 <div class="contact-info fade-in">
-                    <h2>Contact Us</h2>
-                    <p>We'd love to hear from you! Reach out to discuss your next celebration.</p>
+                    <h2 data-i18n="contact.title">Hubungi Kami</h2>
+                    <p>Kami siap membantu Anda! Hubungi untuk pemesanan dan konsultasi.</p>
 
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Location</h4>
-                                <p>Jakarta, Indonesia</p>
-                            </div>
-                        </div>
+                    <div class="contact-details" id="contactDetails">
+                        <!-- Contact items will be dynamically loaded -->
+                    </div>
 
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Phone</h4>
-                                <p>+62 XXX-XXXX-XXXX</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Email</h4>
-                                <p>hello@dpurdadjan.com</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Business Hours</h4>
-                                <p>Mon - Sat: 9:00 AM - 7:00 PM</p>
-                                <p>Sunday: By Appointment</p>
-                            </div>
-                        </div>
+                    <!-- WhatsApp Direct Button -->
+                    <div style="margin-top: 2rem;">
+                        <a href="https://wa.me/6287764230333?text=Halo%20D%27pur%20D%27jadjan!%20Saya%20ingin%20memesan%20produk%20frozen%20food%20dan%20kuliner." 
+                           class="btn btn-whatsapp" target="_blank" rel="noopener" style="width: 100%; justify-content: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            <span data-i18n="contact.form.whatsapp">Chat WhatsApp Langsung</span>
+                        </a>
                     </div>
                 </div>
 
                 <form class="contact-form fade-in" id="contactForm">
                     <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required placeholder="Your name">
+                        <label for="name" data-i18n="contact.form.name">Nama Lengkap</label>
+                        <input type="text" id="name" name="name" required placeholder="Nama Anda">
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        <label for="email" data-i18n="contact.form.email">Alamat Email</label>
+                        <input type="email" id="email" name="email" required placeholder="email@example.com">
                     </div>
 
                     <div class="form-group">
-                        <label for="phone">Phone Number</label>
+                        <label for="phone" data-i18n="contact.form.phone">Nomor WhatsApp</label>
                         <input type="tel" id="phone" name="phone" placeholder="+62 XXX-XXXX-XXXX">
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Message</label>
+                        <label for="message" data-i18n="contact.form.message">Pesan Anda</label>
                         <textarea id="message" name="message" required
-                            placeholder="Tell us about your event and requirements..."></textarea>
+                            placeholder="Ceritakan tentang kebutuhan Anda..."></textarea>
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn btn-primary" data-i18n="contact.form.submit">Kirim Pesan</button>
                     </div>
                 </form>
             </div>
@@ -306,19 +223,18 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>D'pur D'jadjan</h3>
-                    <p>
-                        Creating memorable moments through exceptional cakes and culinary artistry.
-                        Your celebration, our passion.
+                    <h3 data-i18n="footer.about.title">D'pur D'jadjan</h3>
+                    <p data-i18n="footer.about.description">
+                        Spesialis frozen food premium dan masakan pre-order terpercaya. Menghadirkan kelezatan praktis dengan kualitas terjamin untuk keluarga Indonesia.
                     </p>
                     <div class="social-links">
                         <a href="#" class="social-link" aria-label="Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="social-link" aria-label="Instagram">
+                        <a href="https://instagram.com/dpurdjadjan" class="social-link" aria-label="Instagram" target="_blank">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="social-link" aria-label="WhatsApp">
+                        <a href="https://wa.me/6287764230333" class="social-link" aria-label="WhatsApp" target="_blank">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                         <a href="#" class="social-link" aria-label="Twitter">
@@ -328,41 +244,33 @@
                 </div>
 
                 <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#products">Our Products</a></li>
-                        <li><a href="#features">Services</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                    <h3 data-i18n="footer.quickLinks.title">Tautan Cepat</h3>
+                    <ul class="footer-links" id="footerQuickLinks">
+                        <!-- Will be dynamically loaded -->
                     </ul>
                 </div>
 
                 <div class="footer-section">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="#products">Custom Cakes</a></li>
-                        <li><a href="#products">Wedding Cakes</a></li>
-                        <li><a href="#features">Event Catering</a></li>
-                        <li><a href="#features">Delivery Service</a></li>
-                        <li><a href="#contact">Consultation</a></li>
+                    <h3 data-i18n="footer.services.title">Layanan Kami</h3>
+                    <ul class="footer-links" id="footerServicesLinks">
+                        <!-- Will be dynamically loaded -->
                     </ul>
                 </div>
 
                 <div class="footer-section">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe to get special offers and updates</p>
-                    <form style="margin-top: 1rem;">
-                        <input type="email" placeholder="Your email"
+                    <h3 data-i18n="footer.newsletter.title">Newsletter</h3>
+                    <p data-i18n="footer.newsletter.description">Dapatkan info promo, produk baru, dan tips kuliner langsung ke email Anda.</p>
+                    <form style="margin-top: 1rem;" id="newsletterForm">
+                        <input type="email" placeholder="Email Anda" data-i18n-placeholder="footer.newsletter.placeholder"
                             style="width: 100%; padding: 0.8rem; border-radius: 8px; border: none; margin-bottom: 0.5rem;">
-                        <button type="submit" class="btn btn-primary"
-                            style="width: 100%; padding: 0.8rem;">Subscribe</button>
+                        <button type="submit" class="btn btn-primary" data-i18n="footer.newsletter.button"
+                            style="width: 100%; padding: 0.8rem;">Berlangganan</button>
                     </form>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2026 D'pur D'jadjan Cake & Culinary. All rights reserved. | Crafted with ❤️</p>
+                <p data-i18n="footer.copyright">&copy; 2026 D'pur D'jadjan. Semua hak dilindungi.</p>
             </div>
         </div>
     </footer>

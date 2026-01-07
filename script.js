@@ -1,13 +1,356 @@
 // ============================================
-// D'pur D'jadjan Cake & Culinary - JavaScript
+// D'pur D'jadjan - Frozen Food Specialist
+// Multi-Language Dynamic Content System
 // ============================================
 
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
+// Global state
+let currentLang = 'id'; // Default to Indonesian
+let contentData = null;
+
+// ============================================
+// Initialize Application
+// ============================================
+document.addEventListener('DOMContentLoaded', async function() {
+    // Load saved language preference
+    const savedLang = localStorage.getItem('language') || 'id';
+    currentLang = savedLang;
     
-    // ============================================
-    // Navigation Scroll Effect
-    // ============================================
+    // Load content and render
+    await loadContent(currentLang);
+    initializeUI();
+    initializeAnimations();
+});
+
+// ============================================
+// Content Loading
+// ============================================
+async function loadContent(lang) {
+    try {
+        const response = await fetch(`content-${lang}.json`);
+        if (!response.ok) throw new Error('Failed to load content');
+        contentData = await response.json();
+        
+        // Update document
+        updateDocumentMeta();
+        renderAllContent();
+        
+        // Update language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+        
+        // Update HTML lang attribute
+        document.documentElement.lang = lang;
+        document.documentElement.dataset.lang = lang;
+        
+    } catch (error) {
+        console.error('Error loading content:', error);
+        // Fallback to Indonesian if error
+        if (lang !== 'id') {
+            await loadContent('id');
+        }
+    }
+}
+
+// ============================================
+// Language Switcher
+// ============================================
+window.switchLanguage = async function(lang) {
+    if (lang === currentLang) return;
+    
+    currentLang = lang;
+    localStorage.setItem('language', lang);
+    await loadContent(lang);
+    
+    // Re-initialize animations for newly rendered content
+    initializeAnimations();
+};
+
+// ============================================
+// Update Document Meta
+// ============================================
+function updateDocumentMeta() {
+    document.title = contentData.meta.title;
+    
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+        metaDesc.content = contentData.meta.description;
+    }
+}
+
+// ============================================
+// Render All Content
+// ============================================
+function renderAllContent() {
+    renderHeroSection();
+    renderAboutSection();
+    renderProductsSection();
+    renderServicesSection();
+    renderContactSection();
+    renderFooter();
+}
+
+// ============================================
+// Hero Section
+// ============================================
+function renderHeroSection() {
+    const heroSection = document.querySelector('.hero .hero-content');
+    if (!heroSection) return;
+    
+    heroSection.querySelector('h1').textContent = contentData.hero.headline;
+    heroSection.querySelector('p').textContent = contentData.hero.subheadline;
+    
+    const buttons = heroSection.querySelectorAll('.btn');
+    if (buttons[0]) buttons[0].textContent = contentData.hero.cta.primary;
+    if (buttons[1]) {
+        const whatsappBtn = buttons[1];
+        const span = whatsappBtn.querySelector('span');
+        if (span) span.textContent = contentData.hero.cta.whatsapp;
+        
+        // Update WhatsApp link with localized message
+        const message = encodeURIComponent(contentData.whatsapp.message);
+        whatsappBtn.href = `https://wa.me/6287764230333?text=${message}`;
+    }
+}
+
+// ============================================
+// About Section
+// ============================================
+function renderAboutSection() {
+    const aboutSection = document.querySelector('#about');
+    if (!aboutSection) return;
+    
+    // Update title
+    const title = aboutSection.querySelector('h2');
+    if (title) title.textContent = contentData.about.title;
+    
+    // Update content (innerHTML to support <strong> tags)
+    const contentDiv = aboutSection.querySelector('[data-i18n="about.content"]');
+    if (contentDiv) {
+        contentDiv.innerHTML = `<p>${contentData.about.content}</p>`;
+    }
+    
+    // Render features
+    const featuresContainer = aboutSection.querySelector('#aboutFeatures');
+    if (featuresContainer && contentData.about.features) {
+        featuresContainer.innerHTML = contentData.about.features.map(feature => `
+            <div class="feature-item">
+                <div class="feature-icon">${feature.icon}</div>
+                <div class="feature-text">
+                    <h4>${feature.title}</h4>
+                    <p>${feature.description}</p>
+                </div>
+            </div>
+        `).join('');
+    }
+}
+
+// ============================================
+// Products Section
+// ============================================
+function renderProductsSection() {
+    if (!contentData.products || !contentData.products.categories) return;
+    
+    // Update section header
+    const sectionHeader = document.querySelector('#products .section-header');
+    if (sectionHeader) {
+        const h2 = sectionHeader.querySelector('h2');
+        const p = sectionHeader.querySelector('p');
+        if (h2) h2.textContent = contentData.products.title;
+        if (p) p.textContent = contentData.products.subtitle;
+    }
+    
+    // Render Frozen Food Products (Primary)
+    const frozenCategory = contentData.products.categories.find(cat => cat.id === 'frozen');
+    if (frozenCategory) {
+        const frozenGrid = document.getElementById('frozenProductsGrid');
+        if (frozenGrid) {
+            frozenGrid.innerHTML = frozenCategory.items.map(product => `
+                <div class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                        <div class="product-overlay">
+                            <h3>${product.name}</h3>
+                            ${product.tag ? `<span class="product-tag">${product.tag}</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+    
+    // Update WhatsApp CTA in products section
+    const whatsappCTA = document.querySelector('#products .cta-section a');
+    if (whatsappCTA) {
+        const message = encodeURIComponent(contentData.whatsapp.message);
+        whatsappCTA.href = `https://wa.me/6287764230333?text=${message}`;
+    }
+    
+    // Render Cake Products (Bonus Treats)
+    const cakeCategory = contentData.products.categories.find(cat => cat.id === 'cakes');
+    if (cakeCategory) {
+        const cakeGrid = document.getElementById('cakeProductsGrid');
+        if (cakeGrid) {
+            cakeGrid.innerHTML = cakeCategory.items.map(product => `
+                <div class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                        <div class="product-overlay">
+                            <h3>${product.name}</h3>
+                            ${product.tag ? `<span class="product-tag">${product.tag}</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+}
+
+// ============================================
+// Services Section
+// ============================================
+function renderServicesSection() {
+    if (!contentData.services || !contentData.services.items) return;
+    
+    // Update section title
+    const sectionHeader = document.querySelector('#features .section-header h2');
+    if (sectionHeader) {
+        sectionHeader.textContent = contentData.services.title;
+    }
+    
+    // Render service cards
+    const servicesGrid = document.getElementById('servicesGrid');
+    if (servicesGrid) {
+        servicesGrid.innerHTML = contentData.services.items.map(service => `
+            <div class="feature-card fade-in">
+                <div class="feature-card-icon">${service.icon}</div>
+                <h3>${service.title}</h3>
+                <p>${service.description}</p>
+            </div>
+        `).join('');
+    }
+}
+
+// ============================================
+// Contact Section
+// ============================================
+function renderContactSection() {
+    if (!contentData.contact) return;
+    
+    // Update section header
+    const sectionHeader = document.querySelector('#contact .section-header');
+    if (sectionHeader) {
+        const h2 = sectionHeader.querySelector('h2');
+        const p = sectionHeader.querySelector('p');
+        if (h2) h2.textContent = contentData.contact.title;
+        if (p) p.textContent = contentData.contact.subtitle;
+    }
+    
+    // Update contact info title
+    const contactTitle = document.querySelector('.contact-info h2');
+    if (contactTitle) contactTitle.textContent = contentData.contact.title;
+    
+    // Render contact details
+    const contactDetails = document.getElementById('contactDetails');
+    if (contactDetails && contentData.contact.info) {
+        contactDetails.innerHTML = contentData.contact.info.map(item => `
+            <div class="contact-item">
+                <div class="contact-icon">${item.icon}</div>
+                <div class="contact-text">
+                    <h4>${item.title}</h4>
+                    <p>${item.content}</p>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    // Update WhatsApp button in contact section
+    const whatsappBtn = document.querySelector('.contact-info .btn-whatsapp');
+    if (whatsappBtn) {
+        const span = whatsappBtn.querySelector('span');
+        if (span) span.textContent = contentData.contact.form.whatsapp;
+        
+        const message = encodeURIComponent(contentData.whatsapp.message);
+        whatsappBtn.href = `https://wa.me/6287764230333?text=${message}`;
+    }
+    
+    // Update form labels
+    const form = document.getElementById('contactForm');
+    if (form && contentData.contact.form) {
+        const labels = form.querySelectorAll('label');
+        const formData = contentData.contact.form;
+        
+        if (labels[0]) labels[0].textContent = formData.name;
+        if (labels[1]) labels[1].textContent = formData.email;
+        if (labels[2]) labels[2].textContent = formData.phone;
+        if (labels[3]) labels[3].textContent = formData.message;
+        
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) submitBtn.textContent = formData.submit;
+    }
+}
+
+// ============================================
+// Footer
+// ============================================
+function renderFooter() {
+    if (!contentData.footer) return;
+    
+    // About section
+    const footerAboutTitle = document.querySelector('.footer-section h3[data-i18n="footer.about.title"]');
+    const footerAboutDesc = document.querySelector('.footer-section p[data-i18n="footer.about.description"]');
+    if (footerAboutTitle) footerAboutTitle.textContent = contentData.footer.about.title;
+    if (footerAboutDesc) footerAboutDesc.textContent = contentData.footer.about.description;
+    
+    // Quick Links
+    const quickLinksTitle = document.querySelector('.footer-section h3[data-i18n="footer.quickLinks.title"]');
+    if (quickLinksTitle) quickLinksTitle.textContent = contentData.footer.quickLinks.title;
+    
+    const quickLinksUL = document.getElementById('footerQuickLinks');
+    if (quickLinksUL && contentData.footer.quickLinks.links) {
+        quickLinksUL.innerHTML = contentData.footer.quickLinks.links.map(link => `
+            <li><a href="${link.href}">${link.text}</a></li>
+        `).join('');
+    }
+    
+    // Services Links
+    const servicesTitle = document.querySelector('.footer-section h3[data-i18n="footer.services.title"]');
+    if (servicesTitle) servicesTitle.textContent = contentData.footer.services.title;
+    
+    const servicesLinksUL = document.getElementById('footerServicesLinks');
+    if (servicesLinksUL && contentData.footer.services.links) {
+        servicesLinksUL.innerHTML = contentData.footer.services.links.map(link => `
+            <li><a href="${link.href}">${link.text}</a></li>
+        `).join('');
+    }
+    
+    // Newsletter
+    const newsletterTitle = document.querySelector('.footer-section h3[data-i18n="footer.newsletter.title"]');
+    const newsletterDesc = document.querySelector('.footer-section p[data-i18n="footer.newsletter.description"]');
+    const newsletterBtn = document.querySelector('.footer-section button[data-i18n="footer.newsletter.button"]');
+    
+    if (newsletterTitle) newsletterTitle.textContent = contentData.footer.newsletter.title;
+    if (newsletterDesc) newsletterDesc.textContent = contentData.footer.newsletter.description;
+    if (newsletterBtn) newsletterBtn.textContent = contentData.footer.newsletter.button;
+    
+    // Copyright
+    const copyright = document.querySelector('.footer-bottom p');
+    if (copyright) copyright.textContent = contentData.footer.copyright;
+}
+
+// ============================================
+// Navigation & UI Interactions
+// ============================================
+function initializeUI() {
+    // Navigation scroll effect
     const navbar = document.getElementById('navbar');
     const navLinks = document.querySelectorAll('.nav-link');
     
@@ -19,60 +362,108 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // ============================================
-    // Mobile Menu Toggle
-    // ============================================
+    // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
     
-    menuToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-        menuToggle.classList.toggle('active');
-    });
-    
-    // Close menu when clicking on a link
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-            menuToggle.classList.remove('active');
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
         });
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-        const isClickInsideNav = navMenu.contains(event.target);
-        const isClickOnToggle = menuToggle.contains(event.target);
         
-        if (!isClickInsideNav && !isClickOnToggle && navMenu.classList.contains('active')) {
-            navMenu.classList.remove('active');
-            menuToggle.classList.remove('active');
-        }
-    });
+        // Close menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = navMenu.contains(event.target);
+            const isClickOnToggle = menuToggle.contains(event.target);
+            
+            if (!isClickInsideNav && !isClickOnToggle && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+    }
     
-    // ============================================
-    // Smooth Scrolling for Navigation Links
-    // ============================================
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
+            if (targetId === '#') return;
             
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 80;
-                
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         });
     });
     
-    // ============================================
-    // Scroll Animation (Intersection Observer)
-    // ============================================
+    // Hero parallax effect
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = scrolled * 0.5;
+            heroSection.style.backgroundPositionY = parallax + 'px';
+        });
+    }
+    
+    // Contact form submission
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const message = formData.get('message');
+            
+            // Build WhatsApp message
+            let whatsappMessage = `Halo D'pur D'jadjan!%0A%0A`;
+            whatsappMessage += `Nama: ${encodeURIComponent(name)}%0A`;
+            if (phone) whatsappMessage += `Telepon: ${encodeURIComponent(phone)}%0A`;
+            whatsappMessage += `%0APesan:%0A${encodeURIComponent(message)}`;
+            
+            // Redirect to WhatsApp
+            window.open(`https://wa.me/6287764230333?text=${whatsappMessage}`, '_blank');
+            
+            // Reset form
+            this.reset();
+        });
+    }
+    
+    // Newsletter form
+    const newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            
+            alert(currentLang === 'id' 
+                ? `Terima kasih! Email ${email} telah terdaftar.`
+                : `Thank you! Email ${email} has been registered.`
+            );
+            this.reset();
+        });
+    }
+}
+
+// ============================================
+// Scroll Animations (Intersection Observer)
+// ============================================
+function initializeAnimations() {
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -86,219 +477,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
     
-    // Observe all elements with fade-in class
-    const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach(element => {
+    // Observe all fade-in elements
+    document.querySelectorAll('.fade-in').forEach(element => {
         observer.observe(element);
     });
-    
-    // ============================================
-    // Contact Form Handling
-    // ============================================
-    const contactForm = document.getElementById('contactForm');
-    
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form values
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            message: document.getElementById('message').value
-        };
-        
-        // Basic validation
-        if (!formData.name || !formData.email || !formData.message) {
-            showNotification('Please fill in all required fields', 'error');
-            return;
-        }
-        
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(formData.email)) {
-            showNotification('Please enter a valid email address', 'error');
-            return;
-        }
-        
-        // Simulate form submission (replace with actual backend call)
-        console.log('Form submitted:', formData);
-        showNotification('Thank you! Your message has been sent successfully. We\'ll get back to you soon!', 'success');
-        
-        // Reset form
-        contactForm.reset();
-    });
-    
-    // ============================================
-    // Notification System
-    // ============================================
-    function showNotification(message, type = 'success') {
-        // Remove existing notification if any
-        const existingNotification = document.querySelector('.notification');
-        if (existingNotification) {
-            existingNotification.remove();
-        }
-        
-        // Create notification element
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        notification.textContent = message;
-        
-        // Apply styles
-        Object.assign(notification.style, {
-            position: 'fixed',
-            top: '100px',
-            right: '20px',
-            padding: '1rem 1.5rem',
-            borderRadius: '8px',
-            backgroundColor: type === 'success' ? '#10b981' : '#ef4444',
-            color: 'white',
-            fontFamily: 'Inter, sans-serif',
-            fontSize: '0.95rem',
-            fontWeight: '500',
-            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)',
-            zIndex: '10000',
-            animation: 'slideIn 0.3s ease',
-            maxWidth: '400px'
-        });
-        
-        // Add to document
-        document.body.appendChild(notification);
-        
-        // Remove after 5 seconds
-        setTimeout(() => {
-            notification.style.animation = 'slideOut 0.3s ease';
-            setTimeout(() => notification.remove(), 300);
-        }, 5000);
-    }
-    
-    // Add animation keyframes
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideIn {
-            from {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes slideOut {
-            from {
-                transform: translateX(0);
-                opacity: 1;
-            }
-            to {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-    
-    // ============================================
-    // Active Navigation Link
-    // ============================================
-    function setActiveNavLink() {
-        const sections = document.querySelectorAll('section[id]');
-        const scrollY = window.pageYOffset;
-        
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100;
-            const sectionId = section.getAttribute('id');
-            const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-            
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                navLinks.forEach(link => link.classList.remove('active'));
-                if (navLink) {
-                    navLink.classList.add('active');
-                }
-            }
-        });
-    }
-    
-    window.addEventListener('scroll', setActiveNavLink);
-    
-    // ============================================
-    // Product Card Hover Effect Enhancement
-    // ============================================
-    const productCards = document.querySelectorAll('.product-card');
-    
-    productCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-    
-    // ============================================
-    // Parallax Effect for Hero Section
-    // ============================================
-    const hero = document.querySelector('.hero');
-    
-    if (hero) {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = scrolled * 0.5;
-            hero.style.transform = `translateY(${parallax}px)`;
-        });
-    }
-    
-    // ============================================
-    // Newsletter Form
-    // ============================================
-    const newsletterForms = document.querySelectorAll('form');
-    
-    newsletterForms.forEach(form => {
-        // Skip the contact form
-        if (form.id === 'contactForm') return;
-        
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const emailInput = this.querySelector('input[type="email"]');
-            
-            if (emailInput && emailInput.value) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                
-                if (emailRegex.test(emailInput.value)) {
-                    showNotification('Thank you for subscribing to our newsletter!', 'success');
-                    emailInput.value = '';
-                } else {
-                    showNotification('Please enter a valid email address', 'error');
-                }
-            }
-        });
-    });
-    
-    // ============================================
-    // Initialize on Load
-    // ============================================
-    console.log('D\'pur D\'jadjan Landing Page Initialized ✨');
-    
-    // Trigger scroll animation check on load
-    setActiveNavLink();
-});
-
-// ============================================
-// Handle Window Resize
-// ============================================
-let resizeTimer;
-window.addEventListener('resize', function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function() {
-        // Close mobile menu on resize to desktop
-        if (window.innerWidth > 768) {
-            const navMenu = document.getElementById('navMenu');
-            const menuToggle = document.getElementById('menuToggle');
-            navMenu.classList.remove('active');
-            menuToggle.classList.remove('active');
-        }
-    }, 250);
-});
+}

@@ -9,34 +9,23 @@
    CSS Custom Properties (Design Tokens)
    ============================================ */
 :root {
-  /* Colors - D'pur D'jadjan Frozen Food Specialist - Enhanced Contrast */
-  --primary-rose-gold: #B8813D;
-  /* Further darkened for WCAG AA compliance */
+  /* Colors - Enhanced Culinary Palette with Improved Contrast */
+  --primary-rose-gold: #C7944A;
+  /* Darkened for better contrast */
   --primary-burgundy: #8B2635;
   --secondary-cream: #FFF8F0;
   --secondary-brown: #3E2723;
-  --accent-gold: #D4A017;
-  /* Gold adjusted for better contrast */
-  --accent-teal: #2C7873;
-  /* Fresh, frozen food accent */
-  
+  --accent-gold: #E6C24D;
+  /* Darkened for better text visibility */
   --text-dark: #0a0a0a;
-  /* Primary text */
-  --text-light: #3d3d3d;
-  /* Darker for better readability */
-  --text-on-gold: #1a1a1a;
-  /* Text on gold backgrounds */
+  /* Strengthened */
+  --text-light: #4a4a4a;
+  /* Strengthened */
   --white: #ffffff;
-  
-  /* Interactive Colors */
-  --whatsapp-green: #25D366;
-  --whatsapp-green-dark: #1DA851;
-  
   --shadow: rgba(0, 0, 0, 0.1);
-  --shadow-medium: rgba(0, 0, 0, 0.15);
-  --shadow-strong: rgba(0, 0, 0, 0.25);
-  --overlay-dark: rgba(10, 10, 10, 0.92);
-  /* Increased for better text contrast */
+  --shadow-strong: rgba(0, 0, 0, 0.2);
+  --overlay-dark: rgba(10, 10, 10, 0.85);
+  /* High contrast overlay */
 
   /* Semantic Colors for Hierarchy */
   --primary-content-bg: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(139, 38, 53, 0.08));
@@ -200,63 +189,6 @@ p {
 .btn-secondary:hover {
   background: var(--primary-burgundy);
   color: var(--white);
-}
-
-/* WhatsApp Button Styles */
-.btn-whatsapp {
-  background: var(--whatsapp-green);
-  color: var(--white);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
-  font-weight: 600;
-}
-
-.btn-whatsapp:hover {
-  background: var(--whatsapp-green-dark);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
-}
-
-.btn-whatsapp svg {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-}
-
-/* Language Switcher */
-.lang-switcher {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  background: var(--secondary-content-bg);
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(184, 129, 61, 0.2);
-}
-
-.lang-btn {
-  padding: 0.4rem 0.8rem;
-  border: none;
-  background: transparent;
-  color: var(--text-light);
-  font-size: 0.875rem;
-  font-weight: 500;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: var(--transition-smooth);
-}
-
-.lang-btn.active {
-  background: linear-gradient(135deg, var(--primary-rose-gold), var(--primary-burgundy));
-  color: var(--white);
-  box-shadow: 0 2px 8px rgba(184, 129, 61, 0.3);
-}
-
-.lang-btn:hover:not(.active) {
-  background: rgba(184, 129, 61, 0.1);
-  color: var(--text-dark);
 }
 
 /* Animation Utilities */
@@ -566,19 +498,7 @@ p {
 .product-overlay h3 {
   color: var(--white);
   font-size: 1.3rem;
-  margin: 0 0 0.5rem 0;
-}
-
-.product-tag {
-  display: inline-block;
-  background: var(--accent-gold);
-  color: var(--text-on-gold);
-  padding: 0.3rem 0.8rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  margin: 0;
 }
 
 .product-info {
