@@ -50,6 +50,36 @@
   "products": {
     "title": "Our Signature Products",
     "subtitle": "Premium Frozen Food & Culinary",
+    "categoryCards": [
+      {
+        "id": "frozenfood",
+        "icon": "❄️",
+        "title": "Frozen Food",
+        "description": "Premium ready-to-cook frozen meals",
+        "link": "frozenfood.html"
+      },
+      {
+        "id": "culinary",
+        "icon": "🍽️",
+        "title": "Culinary",
+        "description": "Pre-order meals & catering services",
+        "link": "culinary.html"
+      },
+      {
+        "id": "bakery",
+        "icon": "🍞",
+        "title": "Bread & Pastry",
+        "description": "Fresh quality cakes and breads",
+        "link": "bakery.html"
+      },
+      {
+        "id": "creative",
+        "icon": "✨",
+        "title": "Creative",
+        "description": "Unique & innovative culinary creations",
+        "link": "creative.html"
+      }
+    ],
     "categories": [
       {
         "id": "frozen",

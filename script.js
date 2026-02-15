@@ -1,6 +1,7 @@
 // ============================================
 // D'pur D'jadjan - Frozen Food Specialist
 // Multi-Language Dynamic Content System
+// CORS-Free: Uses embedded data instead of fetch
 // ============================================
 
 // Global state
@@ -10,25 +11,30 @@ let contentData = null;
 // ============================================
 // Initialize Application
 // ============================================
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', function() {
     // Load saved language preference
     const savedLang = localStorage.getItem('language') || 'id';
     currentLang = savedLang;
     
-    // Load content and render
-    await loadContent(currentLang);
+    // Load content and render (synchronous now)
+    loadContent(currentLang);
     initializeUI();
     initializeAnimations();
 });
 
 // ============================================
-// Content Loading
+// Content Loading (No Fetch - Uses Embedded Data)
 // ============================================
-async function loadContent(lang) {
+function loadContent(lang) {
     try {
-        const response = await fetch(`content-${lang}.json`);
-        if (!response.ok) throw new Error('Failed to load content');
-        contentData = await response.json();
+        // Check if CONTENT_DATA is available (from content-data.js)
+        if (typeof CONTENT_DATA === 'undefined') {
+            console.error('CONTENT_DATA not found. Make sure content-data.js is loaded before script.js');
+            return;
+        }
+        
+        // Get content from embedded data
+        contentData = CONTENT_DATA[lang] || CONTENT_DATA['id'];
         
         // Update document
         updateDocumentMeta();
@@ -47,7 +53,7 @@ async function loadContent(lang) {
         console.error('Error loading content:', error);
         // Fallback to Indonesian if error
         if (lang !== 'id') {
-            await loadContent('id');
+            loadContent('id');
         }
     }
 }
@@ -55,12 +61,12 @@ async function loadContent(lang) {
 // ============================================
 // Language Switcher
 // ============================================
-window.switchLanguage = async function(lang) {
+window.switchLanguage = function(lang) {
     if (lang === currentLang) return;
     
     currentLang = lang;
     localStorage.setItem('language', lang);
-    await loadContent(lang);
+    loadContent(lang);
     
     // Re-initialize animations for newly rendered content
     initializeAnimations();
@@ -158,6 +164,21 @@ function renderProductsSection() {
         const p = sectionHeader.querySelector('p');
         if (h2) h2.textContent = contentData.products.title;
         if (p) p.textContent = contentData.products.subtitle;
+    }
+    
+    // Render Product Category Cards
+    if (contentData.products.categoryCards) {
+        const categoryContainer = document.getElementById('productCategories');
+        if (categoryContainer) {
+            categoryContainer.innerHTML = contentData.products.categoryCards.map(card => `
+                <a href="${card.link}" class="category-card">
+                    <div class="category-icon">${card.icon}</div>
+                    <h3>${card.title}</h3>
+                    <p>${card.description}</p>
+                    <span class="category-arrow">→</span>
+                </a>
+            `).join('');
+        }
     }
     
     // Render Frozen Food Products (Primary)

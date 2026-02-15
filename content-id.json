@@ -50,6 +50,36 @@
   "products": {
     "title": "Produk Unggulan Kami",
     "subtitle": "Frozen Food & Kuliner Premium",
+    "categoryCards": [
+      {
+        "id": "frozenfood",
+        "icon": "❄️",
+        "title": "Frozen Food",
+        "description": "Makanan beku premium siap masak",
+        "link": "frozenfood.html"
+      },
+      {
+        "id": "culinary",
+        "icon": "🍽️",
+        "title": "Culinary",
+        "description": "Masakan pre-order & katering",
+        "link": "culinary.html"
+      },
+      {
+        "id": "bakery",
+        "icon": "🍞",
+        "title": "Roti & Pastry",
+        "description": "Kue dan roti segar berkualitas",
+        "link": "bakery.html"
+      },
+      {
+        "id": "creative",
+        "icon": "✨",
+        "title": "Kreatif",
+        "description": "Kreasi kuliner unik & inovatif",
+        "link": "creative.html"
+      }
+    ],
     "categories": [
       {
         "id": "frozen",

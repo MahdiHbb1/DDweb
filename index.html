@@ -121,6 +121,11 @@
                 <p data-i18n="products.subtitle">Frozen Food & Kuliner Premium</p>
             </div>
 
+            <!-- Product Category Navigation -->
+            <div class="product-categories fade-in" id="productCategories">
+                <!-- Categories will be dynamically loaded -->
+            </div>
+
             <!-- Frozen Food - Primary Category -->
             <div id="frozenProductsGrid" class="products-grid">
                 <!-- Frozen food products will be dynamically loaded here -->
@@ -275,7 +280,8 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JavaScript - Load content data first, then main script -->
+    <script src="content-data.js"></script>
     <script src="script.js"></script>
 </body>
 
